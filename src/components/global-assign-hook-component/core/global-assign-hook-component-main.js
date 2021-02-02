@@ -61,10 +61,10 @@ function process(requestDetail, responseDetail) {
 
 // 判断是否是HTML类型的响应内容
 function isHtmlResponse(responseDetail) {
-    for (let key in responseDetail.response.header) {
-        if (key.toLowerCase() === "content-type" && responseDetail.response.header[key].toLowerCase().toLowerCase().indexOf("text/html") !== -1) {
-            if (!responseDetail.response.header[key].toLowerCase().endsWith("charset=utf-8")) {
-                responseDetail.response.header[key] = responseDetail.response.header[key] + ";charset=UTF-8";
+    for (let [key,value] of Object.entries(responseDetail.response.header)) {
+        if (key.toLowerCase() === "content-type" && value.includes("text/html")) {
+            if (!value.toLowerCase().endsWith("charset=utf-8")) {
+                responseDetail.response.header[key] = value + ";charset=UTF-8";
             }
             return true;
         }
