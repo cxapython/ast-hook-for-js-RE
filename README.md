@@ -71,7 +71,7 @@ npm install
 ### 启动项目 
 需要启动两个本地Server，anyproxy的代理Server监听在本地10086端口，运行这个文件即可： 
 ```text
-src/proxy-server/proxy-server.js
+npm start
 ```
 要用anyproxy抓取https请求需要信任它的证书，在运行这个文件之前，先用`anyproxy ca`选项启动，访问它的web管理界面：
 ```text
